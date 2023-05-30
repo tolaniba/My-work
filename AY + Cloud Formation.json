@@ -1,0 +1,110 @@
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "",
+    "Metadata": {
+
+    },
+    "Parameters": {
+    
+    },
+    "Mappings": {
+
+    },
+    "Conditions": {
+
+    },
+    "Resources": {
+    "Tunde-vpc": {
+      "Type": "AWS::EC2::VPC",
+      "Properties": {
+        "CidrBlock": "10.1.0.0/16",
+        
+        
+        "Tags":[
+        { "Key": "Name", "Value":  "Tunde-Webserver-VPC" }
+        ]
+      }
+    }
+    
+    
+    "Tunde-prv-sub1": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "AvailabilityZone": "us-east-1a",
+        "VpcId": 
+        { "Ref": "Tunde-vpc" }
+        ,
+        "CidrBlock": "10.1.1.0/24",
+        
+        
+        "Tags":[
+        { "Key": "Name", "Value":  "Tunde-Priv-Sub-az1a" }
+        ]
+      }
+    }
+    
+    
+    "Tunde-prv-sub2": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "AvailabilityZone": "us-east-1b",
+        "VpcId":
+        { "Ref": "Tunde-vpc" }
+        ,
+        "CidrBlock": "10.1.2.0/24",
+        
+        
+        "Tags":[
+        { "Key": "Name", "Value":  "Tunde-Priv-Sub-az1b" }
+        ]
+      }
+    }
+    
+    
+    "Tunde-pub-sub1": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "AvailabilityZone": "us-east-1a",
+        "VpcId": 
+        { "Ref": "Tunde-vpc" }
+        ,
+        "CidrBlock": "10.1.3.0/24",
+        
+        "Tags":[
+        { "Key": "Name", "Value":  "Tunde-Pub-Sub-az1a" }
+        ]
+      }
+    }
+    
+    
+    "Tunde-pub-sub2": {
+      "Type": "AWS::EC2::Subnet",
+      "Properties": {
+        "AvailabilityZone": "us-east-1b",
+        "VpcId": 
+        { "Ref": "Tunde-vpc" }
+        ,
+        "CidrBlock": "10.1.4.0/24",
+        
+        
+        "Tags":[
+        { "Key": "Name", "Value":  "Tunde-Pub-Sub-az1b" }
+        ]
+      }
+    }
+    
+    
+    "routeTableName": {
+      "Type": "AWS::EC2::RouteTable",
+      "Properties": {
+        "VpcId": "--",
+        "Tags": ["--"]
+      }
+    }
+    
+          
+    },
+    "Outputs": {
+
+    }
+}
